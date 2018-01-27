@@ -2,7 +2,7 @@
 
 # Run by root
 
-source functions.sh
+source /home/alarm/functions.sh
 checkIfRoot()
 
 info "Updating system..."

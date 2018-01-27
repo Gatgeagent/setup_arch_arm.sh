@@ -60,13 +60,13 @@ sudo pacman --noconfirm -S --needed base-devel git yajl
 info "Installing yaourt: Cloning and installing package-query..."
 git clone https://aur.archlinux.org/package-query.git
 cd package-query/
-sudo makepkg -si
+makepkg -si
 cd ..
 
 info "Installing yaourt: Finally cloning and installing yaourt..."
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt/
-sudo makepkg -si
+makepkg -si
 
 info "Installing yaourt: Cleaning up yaourt installation..."
 

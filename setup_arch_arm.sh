@@ -101,6 +101,9 @@ info "Locking down ssh..."
 info_simple "Enter port for ssh: "
 read port || port='50'
 replaceLine "/etc/ssh/sshd_config" "#Port 22" "Port $port"
+replaceLine "/etc/ssh/sshd_config" "#LoginGraceTime 2m" "LoginGraceTime 1m"
+replaceLine "/etc/ssh/sshd_config" "#MaxAuthTries 6" "MaxAuthTries 3"
+replaceLine "/etc/ssh/sshd_config" "#MaxSessions 10" "MaxSessions 6"
 info "SSH will now run on port $port"
 sudo echo "KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256" >> "/etc/ssh/sshd_config"
 sudo echo "Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr" >> "/etc/ssh/sshd_config"
@@ -129,7 +132,8 @@ info "Installing misc utilities..."
 yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux polkit --noconfirm
 
 info "The fingerprint of the server changed."
-info "Don't forget to set \"PasswordAuthentification no\" in /etc/ssh/sshd_config!"
+info_simple "Don't forget to set \"PasswordAuthentification no\" in /etc/ssh/sshd_config!"
+info_simple "And \"deluser alarm\""
 
 info "By pressing enter, the server will be rebooted."
 read

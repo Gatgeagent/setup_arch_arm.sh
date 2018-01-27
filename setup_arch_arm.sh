@@ -98,6 +98,8 @@ sudo curl https://raw.githubusercontent.com/Gatgeagent/dotfiles/master/zshrc -o 
 replaceLine "/home/admin/.zshrc" "export LANG=de_DE.utf8" "export LANG=en_US.utf8"
 sudo curl https://raw.githubusercontent.com/Gatgeagent/dotfiles/master/nanorc -o /home/admin/.nanorc
 
+sudo chown -R admin:users /home/admin
+
 info "Locking down ssh..."
 info_simple "Enter port for ssh: "
 read port || port='50'

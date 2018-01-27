@@ -131,6 +131,11 @@ info "Generating locales.."
 replaceLine "/etc/locale.gen" "#en_US.UTF-8 UTF-8" "en_US.UTF-8 UTF-8"
 sudo locale-gen
 
+info "Set hostname:"
+
+read new_hostname || new_hostname='alarm'
+sudo hostnamectl set-hostname "$new_hostname"
+
 info "Installing misc utilities..."
 yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux polkit --noconfirm
 

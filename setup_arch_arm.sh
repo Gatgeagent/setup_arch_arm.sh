@@ -136,6 +136,10 @@ info "Set hostname:"
 read new_hostname || new_hostname='alarm'
 sudo hostnamectl set-hostname "$new_hostname"
 
+info "Set timezone:"
+read new_timezone || new_timezone='Europe/Berlin'
+timedatectl set-timezone "$new_timezone"
+
 info "Installing misc utilities..."
 yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux polkit --noconfirm
 

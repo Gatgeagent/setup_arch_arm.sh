@@ -126,8 +126,12 @@ replaceLine "/etc/locale.gen" "#en_US.UTF-8 UTF-8" "en_US.UTF-8 UTF-8"
 sudo locale-gen
 
 info "Installing misc utilities..."
-yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux --noconfirm
+yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux polkit --noconfirm
 
 info "The fingerprint of the server changed."
 info "Don't forget to set \"PasswordAuthentification no\" in /etc/ssh/sshd_config!"
-info "Maybe reboot the server?"
+
+info "By pressing enter, the server will be rebooted."
+read
+
+sudo reboot now

@@ -30,7 +30,7 @@ function downloadFile() {
 	fi
 }
 
-echo -e "\3[36Arch Linux ARM post-installation script"
+echo -e "\3[36mArch Linux ARM post-installation script"
 
 cd /home/alarm # Just making sure we don't end up being somewhere we shouldn't be
 

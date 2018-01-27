@@ -45,7 +45,7 @@ downloadFile "setup_arch_arm_root.sh" "https://raw.githubusercontent.com/Gatgeag
 source functions.sh
 info_simple "We'll now install some things which need root permissions."
 
-info_simple "When you are root, run \"bash setup_arch_arm_root.sh && exit \""
+info_simple "When you are root, run \"bash setup_arch_arm_root.sh && exit\""
 info_simple "Enter root password \e[94m(root's password is \"\e[96mroot\e[94m\" by default)"
 su root
 
@@ -121,6 +121,10 @@ sudo echo "AllowGroups ssh-user" >> "/etc/ssh/sshd_config"
 sudo groupadd ssh-user
 sudo usermod -a -G ssh-user root
 sudo usermod -a -G ssh-user admin
+
+info "Generating locales.."
+replaceLine "/etc/locale.gen" "#en_US.UTF-8 UTF-8" "en_US.UTF-8 UTF-8"
+sudo locale-gen
 
 info "Installing misc utilities..."
 yaourt -S htop vtop most bzip2 vim jre9-openjdk screen tmux --noconfirm

@@ -46,8 +46,7 @@ downloadFile "setup_arch_arm_root.sh" "https://raw.githubusercontent.com/Gatgeag
 echo -e "\e[36mWe'll now install some things which need root permissions."
 
 echo -e "\e[36mEnter root password \e[94m(root's password is \"\e[96mroot\e[94m\" by default)"
-echo -e "\e[36mWhen you are root, type \"cd /home/alarm && bash setup_arch_arm_root.sh && exit\""
-su root
+su root -c bash setup_arch_arm_root.sh
 
 # We're back with sudo rights now
 

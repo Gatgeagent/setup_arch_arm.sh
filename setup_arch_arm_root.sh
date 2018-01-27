@@ -3,7 +3,7 @@
 # Run by root
 
 source /home/alarm/functions.sh
-checkIfRoot()
+checkIfRoot
 
 info "Updating system..."
 pacman -Syu --noconfirm

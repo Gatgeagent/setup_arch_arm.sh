@@ -46,7 +46,8 @@ downloadFile "setup_arch_arm_root.sh" "https://raw.githubusercontent.com/Gatgeag
 echo -e "\e[36mWe'll now install some things which need root permissions."
 
 echo -e "\e[36mEnter root password \e[94m(root's password is \"\e[96mroot\e[94m\" by default)"
-su root -c bash setup_arch_arm_root.sh
+echo -e "\e[36mWhen you are root, type \"cd /home/alarm && bash setup_arch_arm_root.sh && exit\""
+su root
 
 # We're back with sudo rights now
 
@@ -116,7 +117,7 @@ sudo rm ssh_host_*key*
 sudo ssh-keygen -t ed25519 -f ssh_host_ed25519_key -N "" < /dev/null
 sudo ssh-keygen -t rsa -b 4096 -f ssh_host_rsa_key -N "" < /dev/null
 
-sudo echo "AllowGroups ssh-user" > "/etc/ssh/sshd_config"
+sudo echo "AllowGroups ssh-user" >> "/etc/ssh/sshd_config"
 sudo groupadd ssh-user
 sudo usermod -a -G ssh-user root
 sudo usermod -a -G ssh-user admin

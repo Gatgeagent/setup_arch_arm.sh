@@ -9,8 +9,8 @@ function info_simple() {
 }
 
 function replaceLine() {
-    cat $1 | sed -e "s/$2/$3/" > /tmp/replacement
-    mv /tmp/replacement $1
+    sudo cat $1 | sed -e "s/$2/$3/" > /tmp/replacement
+    sudo mv /tmp/replacement $1
 }
 
 function checkIfRoot() {

@@ -1,7 +1,11 @@
 function info() {
     echo ""
-    echo $1
+    echo -e "\3[36$1"
     echo ""
+}
+
+function info_simple() {
+	echo -e "\3[36$1"
 }
 
 function replaceLine() {
@@ -13,7 +17,7 @@ function checkIfRoot() {
 	if [ "$EUID" -ne 0 ]; then
 		echo "Please run as root user"
 		su root
-		exit
+		exit 1
 	fi
 }
 
@@ -21,6 +25,6 @@ function checkIfNotRoot() {
 	if [ "$EUID" -eq 0 ]; then
 		echo "Please don't run as root user"
 		su alarm
-		exit
+		exit 1
 	fi
 }

@@ -141,7 +141,7 @@ read new_timezone || new_timezone='Europe/Berlin'
 timedatectl set-timezone "$new_timezone"
 
 info "Installing misc utilities..."
-yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux polkit --noconfirm
+yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux polkit lsof --noconfirm
 
 info "The fingerprint of the server changed."
 info_simple "Don't forget to set \"PasswordAuthentification no\" in /etc/ssh/sshd_config!"

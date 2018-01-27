@@ -87,14 +87,13 @@ sudo ufw allow https
 sudo ufw allow sftp
 sudo ufw enable
 
-info "Adding admin user..."
+info "Adding admin user (and proper shell)..."
 
-yaourt -S adduser --noconfirm
+yaourt -S adduser zsh zsh-autosuggestions --noconfirm
 
 sudo adduser admin
 
 info "Setting up zsh for admin..."
-yaourt -S zsh zsh-autosuggestions --noconfirm
 sudo curl https://raw.githubusercontent.com/Gatgeagent/dotfiles/master/zshrc -o /home/admin/.zshrc
 sudo curl https://raw.githubusercontent.com/Gatgeagent/dotfiles/master/nanorc -o /home/admin/.nanorc
 
@@ -127,7 +126,7 @@ replaceLine "/etc/locale.gen" "#en_US.UTF-8 UTF-8" "en_US.UTF-8 UTF-8"
 sudo locale-gen
 
 info "Installing misc utilities..."
-yaourt -S htop vtop most bzip2 vim jre9-openjdk screen tmux --noconfirm
+yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux --noconfirm
 
 info "The fingerprint of the server changed."
 info "Don't forget to set \"PasswordAuthentification no\" in /etc/ssh/sshd_config!"

@@ -7,6 +7,11 @@ checkIfRoot
 
 info "Updating system..."
 pacman -Syu --noconfirm
+info_simple "Was anything updated? (will reboot the system, which is neccesary) (y/n): "
+read wasUpdated || wasUpdated='y'
+if [ wasUpdated == "y" ]; then
+	reboot now
+fi
 info "Adding nano config..."
 curl https://raw.githubusercontent.com/Gatgeagent/dotfiles/master/nanorc -o /root/.nanorc
 

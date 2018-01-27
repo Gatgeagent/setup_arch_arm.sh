@@ -31,22 +31,22 @@ function downloadFile() {
 }
 
 echo ""
-echo -e "\e[36mArch Linux ARM post-installation script"
+echo -e "\e[36mArch Linux ARM post-installation script\e[39m"
 echo ""
 
 cd /home/alarm # Just making sure we don't end up being somewhere we shouldn't be
 
-echo -e "\e[36mChecking dependencies..."
+echo -e "\e[36mChecking dependencies...\e[39m"
 
 dependOn "curl"
 
 downloadFile "functions.sh" "https://raw.githubusercontent.com/Gatgeagent/setup_arch_arm.sh/master/functions.sh"
 downloadFile "setup_arch_arm_root.sh" "https://raw.githubusercontent.com/Gatgeagent/setup_arch_arm.sh/master/setup_arch_arm_root.sh"
+source functions.sh
+info_simple "We'll now install some things which need root permissions."
 
-echo -e "\e[36mWe'll now install some things which need root permissions."
-
-echo -e "\e[93mWhen you are root, run \"bash setup_arch_arm_root.sh && exit \""
-echo -e "\e[36mEnter root password \e[94m(root's password is \"\e[96mroot\e[94m\" by default)"
+info_simple "When you are root, run \"bash setup_arch_arm_root.sh && exit \""
+info_simple "Enter root password \e[94m(root's password is \"\e[96mroot\e[94m\" by default)"
 su root
 
 # We're back with sudo rights now
@@ -79,7 +79,7 @@ cd ..
 sudo rm -dR yaourt/ package-query/
 
 info "Installing ufw..."
-yaourt -S ufw ufw-extras
+yaourt -S ufw ufw-extras --noconfirm
 info_simple "Setting up ufw..."
 sudo ufw allow ssh
 sudo ufw allow http
@@ -123,7 +123,7 @@ sudo usermod -a -G ssh-user root
 sudo usermod -a -G ssh-user admin
 
 info "Installing misc utilities..."
-yaourt -S htop vtop most bzip2 vim jre9-openjdk screen tmux
+yaourt -S htop vtop most bzip2 vim jre9-openjdk screen tmux --noconfirm
 
 info "The fingerprint of the server changed."
 info "Don't forget to set \"PasswordAuthentification no\" in /etc/ssh/sshd_config!"

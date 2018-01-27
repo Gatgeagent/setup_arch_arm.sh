@@ -1,11 +1,11 @@
 function info() {
     echo ""
-    echo -e "\e[36m$1"
+    echo -e "\e[36m$1\e[39m"
     echo ""
 }
 
 function info_simple() {
-	echo -e "\e[36m$1"
+	echo -e "\e[36m$1\e[39m"
 }
 
 function replaceLine() {

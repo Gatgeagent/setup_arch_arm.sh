@@ -95,6 +95,7 @@ sudo adduser admin
 
 info "Setting up zsh for admin..."
 sudo curl https://raw.githubusercontent.com/Gatgeagent/dotfiles/master/zshrc -o /home/admin/.zshrc
+replaceLine "/home/admin/.zshrc" "export LANG=de_DE.utf8" "export LANG=en_US.utf8"
 sudo curl https://raw.githubusercontent.com/Gatgeagent/dotfiles/master/nanorc -o /home/admin/.nanorc
 
 info "Locking down ssh..."
@@ -133,7 +134,7 @@ yaourt -S htop vtop most bzip2 vim jdk9-openjdk screen tmux polkit --noconfirm
 
 info "The fingerprint of the server changed."
 info_simple "Don't forget to set \"PasswordAuthentification no\" in /etc/ssh/sshd_config!"
-info_simple "And \"deluser alarm\""
+info_simple "And \"userdel alarm\""
 
 info "By pressing enter, the server will be rebooted."
 read
